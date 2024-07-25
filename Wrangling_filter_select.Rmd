@@ -37,18 +37,52 @@ dim(movies)     # always rows x columns
 names(movies)   # a good way to keep track of variable names for later use
 ```
 
+```{r}
+mean(movies$rating)
+```
+ The code block shows us the average movie rating at 5.9. 
+ 
+newdata<na.omit> 
+
+```{r}
+newdata<-na.omit(movies$budget)
+```
+
+
+
+```{r}
+median(newdata)
+```
+ The median budget for movie is at 3000000.
+
+```{r}
+smovie<-sort(movieslength)
+```
+
+
+
+```{r}
+print(smovie[11400])
+```
+ 
+```{r}
+
+```
+
+
+
 
 ## Motivation for Wrangling
 
 Now that we have a sense of our data, we can start to dig a little deeper into the details of things. One of the main reasons data wrangling is so important to statisticians and data scientists is that we often collect waaaay more data than we actually need to answer a particular question. You may want to ask the following questions:
 
-- What is the average movie rating?
+- What is the average movie rating? The average movie rating is at 5.9. 
 
-- What is the median budget for a movie?
+- What is the median budget for a movie? The median budget for the movie is at 2 million dollars. 
 
 But after looking at all of the movies recorded here, the more precise questions might turn out to be:
 
-- What is the average rating *of movies longer than 60 minutes?*
+- What is the average rating *of movies longer than 60 minutes?*  The average rating of the movie longer than 60 minutes is at about 90 minutes to be exact. 
 
 - What is the median budget *of animated films compared to documentaries?*
 
@@ -204,8 +238,15 @@ See if you can answer these questions:
 
 1. How many movies were released in 1995?
 
-```{r}
+  The amount of movies that were released in 1995, are
 
+```{r}
+movie1995 <- movies %>%
+filter(year >= 1995) %>%
+drop_na(year) %>%
+select(title, year)
+
+movies1995
 ```
 
 2. Which Comedies with an MPAA rating, over 120 minutes have a rating above 8?
